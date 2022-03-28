@@ -1,5 +1,6 @@
 # To run this script, you need to install Python3, Python3-tk and PySimpleGUI.
 # Made by Sven Azari
+# http://www.github.com/svenazari
 
 import PySimpleGUI as sg
 
