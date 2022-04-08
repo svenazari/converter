@@ -360,7 +360,9 @@ while True:
         else:
             pressuref = float(pressure)
         
-        if dm1 == "b":
+        if dm1 == '':
+            a = 1
+        elif dm1 == "b":
             a = 1
         elif dm1 == "atm":
             a = (1 / 1.01325)
@@ -375,7 +377,9 @@ while True:
         elif dm1 == "mb":
             a = 1000
         
-        if dm2 == "b":
+        if dm2 == '':
+            b = 1
+        elif dm2 == "b":
             b = 1
         elif dm2 == "atm":
             b = (1 / 1.01325)
