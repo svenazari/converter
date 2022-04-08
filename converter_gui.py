@@ -17,6 +17,10 @@ layout = [  [sg.Text("LENGHT")],
             [sg.InputText(size=(4,1), key='speed'), sg.Combo(['m/s', 'km/h', 'mph', 'kt', 'ft/s'], key='dm5'), sg.Text('TO'), sg.Combo(['m/s', 'km/h', 'mph', 'kt', 'ft/s'], key='dm6')],
             [sg.Button("CONVERT SPEED"), sg.Text('', text_color='yellow', key='SPEEDCALC')],
             [sg.HorizontalSeparator()],
+            [sg.Text("PRESSURE")],
+            [sg.InputText(size=(4,1), key='pressure'), sg.Combo(['mb', 'b', 'atm', 'Pa', 'hPa', 'Torr', 'PSI'], key='dm13'), sg.Text('TO'), sg.Combo(['mb', 'b', 'atm', 'Pa', 'hPa', 'Torr', 'PSI'], key='dm14')],
+            [sg.Button("CONVERT PRESSURE"), sg.Text('', text_color='yellow', key='PRESSURECALC')],
+            [sg.HorizontalSeparator()],
             [sg.Text("TEMPERATURE")],
             [sg.InputText(size=(4,1), key='temp'), sg.Combo(['°C', '°F', 'K'], key='dm7'), sg.Text('TO'), sg.Combo(['°C', '°F', 'K'], key='dm8')],
             [sg.Button("CONVERT TEMPERATURE"), sg.Text('', text_color='yellow', key='TEMPCALC')],
@@ -30,6 +34,7 @@ layout = [  [sg.Text("LENGHT")],
             [sg.Button("CONVERT FUEL ECONOMY"), sg.Text('', text_color='yellow', key='FUELCALC')],
             [sg.HorizontalSeparator()],
             [sg.Button("CLEAR"), sg.Button("EXIT")]
+            #zadnji dm14
     ]
 
 window = sg.Window("UNIT CONVERTER").Layout(layout)
@@ -258,7 +263,7 @@ while True:
         
         window['TEMPCALC'].update(temp2)
         
-    elif event == "CONVERT TIME":
+    elif event == "CONVERT TIME": # convvert unitis of time
         time = values['time']
         if time == '':
             timef = 0
@@ -300,7 +305,7 @@ while True:
         time2 = round((timef * x1 / x2), 3)
         window['TIMECALC'].update(time2)
 
-    elif event == "CONVERT FUEL ECONOMY":
+    elif event == "CONVERT FUEL ECONOMY": # convert unitis of fuel economy
         fuel = values['fuel']
         dm1 = values['dm11']
         dm2 = values['dm12']
@@ -344,8 +349,51 @@ while True:
         
         fuel3 = round(fuel2, 3)
         window['FUELCALC'].update(fuel3)
+    
+    elif event == "CONVERT PRESSURE": # convert units of pressure
+        pressure = values['pressure']
+        dm1 = values['dm13']
+        dm2 = values['dm14']
         
-    elif event == "CLEAR":
+        if pressure == '':
+            pressuref = 0
+        else:
+            pressuref = float(pressure)
+        
+        if dm1 == "b":
+            a = 1
+        elif dm1 == "atm":
+            a = (1 / 1.01325)
+        elif dm1 == "Torr":
+            a = 750
+        elif dm1 == "Pa":
+            a = 100000
+        elif dm1 == "hPa":
+            a = 1000
+        elif dm1 == "PSI":
+            a = 14.5038
+        elif dm1 == "mb":
+            a = 1000
+        
+        if dm2 == "b":
+            b = 1
+        elif dm2 == "atm":
+            b = (1 / 1.01325)
+        elif dm2 == "Torr":
+            b = 750
+        elif dm2 == "Pa":
+            b = 100000
+        elif dm2 == "hPa":
+            b = 1000
+        elif dm2 == "PSI":
+            b = 14.5038
+        elif dm2 == "mb":
+            b = 1000
+        
+        pressure2 = round(pressuref / a * b,3)
+        window['PRESSURECALC'].update(pressure2)
+        
+    elif event == "CLEAR": # clear screen
         window['length'].update('')
         window['dm1'].update('')
         window['dm2'].update('')
@@ -370,5 +418,9 @@ while True:
         window['dm11'].update('')
         window['dm12'].update('')
         window['FUELCALC'].update('')
+        window['pressure'].update('')
+        window['dm13'].update('')
+        window['dm14'].update('')
+        window['PRESSURECALC'].update('')
         
 # to add: volume, power, pressure
