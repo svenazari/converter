@@ -48,7 +48,7 @@ while True:
         if length == '':
             lengthf = 0
         else:
-            lengthf = float(length)
+            lengthf = float(length.replace(',','.'))
         dm1 = values['dm1']
         if dm1 == '':
             dm1x = 'mm'
@@ -111,7 +111,7 @@ while True:
         if area == '':
             areaf = 0
         else:
-            areaf = float(area)
+            areaf = float(area.replace(',','.'))
         dm1 = values['dm3']
         if dm1 == '':
             dm1x = 'm2'
@@ -191,7 +191,7 @@ while True:
         if speed == '':
             speedf = 0
         else:
-            speedf = float(speed)
+            speedf = float(speed.replace(',','.'))
         dm1 = values['dm5']
         if dm1 == '':
             dm1x = 'm/s'
@@ -234,7 +234,7 @@ while True:
         if temp == '':
             tempf = 0
         else:
-            tempf = float(temp)
+            tempf = float(temp.replace(',','.'))
         dm1 = values['dm7']
         if dm1 == '':
             dm1x = '°C'
@@ -268,7 +268,7 @@ while True:
         if time == '':
             timef = 0
         else:
-            timef = float(time)
+            timef = float(time.replace(',','.'))
         dm1 = values['dm9']
         if dm1 == '':
             dm1x = 'second'
@@ -313,7 +313,7 @@ while True:
         if fuel == '':
             fuelf = 0
         else:
-            fuelf = float(fuel)
+            fuelf = float(fuel.replace(',','.'))
         
         if dm1 == '':
             dm1x = 'L/100km'
@@ -358,7 +358,7 @@ while True:
         if pressure == '':
             pressuref = 0
         else:
-            pressuref = float(pressure)
+            pressuref = float(pressure.replace(',','.'))
         
         if dm1 == '':
             a = 1
